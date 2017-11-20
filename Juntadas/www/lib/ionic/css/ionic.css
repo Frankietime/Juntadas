@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * Copyright 2015 Drifty Co.
  * http://drifty.com/
@@ -921,7 +921,7 @@
   content: ""; }
 
 .ion-android-contacts:before {
-  content: ""; }
+  content: url('../../../icons/contacts.png'); }
 
 .ion-android-contract:before {
   content: ""; }
@@ -987,7 +987,7 @@
   content: ""; }
 
 .ion-android-home:before {
-  content: ""; }
+  content: url('../../../icons/home.png'); }
 
 .ion-android-image:before {
   content: ""; }
@@ -1005,7 +1005,7 @@
   content: ""; }
 
 .ion-android-mail:before {
-  content: ""; }
+  content: url('../../../icons/notification-false.png'); }
 
 .ion-android-map:before {
   content: ""; }
@@ -3336,7 +3336,7 @@ body,
   word-wrap: break-word;
   font-size: 14px;
   font-family: -apple-system;
-  font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family:  "Raleway", "Roboto", "Segoe UI", sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;

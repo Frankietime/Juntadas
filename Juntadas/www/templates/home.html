@@ -1,7 +1,10 @@
 <ion-view title="Home" id="page2" style="background-color:#FFFFFF;">
-  <ion-content padding="true" class="has-header">
-    <a ui-sref="tabsController.addJuntadaDataStep()" id="home-button3" style="border-radius:1px 1px 1px 1px;" class="button button-dark button-block icon-left ion-android-add-circle">Añadir Juntada</a>
-    <div class="list card" id="home-card21">
+    <ion-floating-button click="myEvent()" has-footer="false" button-color="rgb(177, 42, 201)" icon="ion-plus" icon-color="#fff">
+        <ion-floating-item icon="ion-camera" click="myEvent()"></ion-floating-item>
+        <ion-floating-item icon="ion-person" click="myEvent()"></ion-floating-item>
+    </ion-floating-button>
+    <ion-content padding="true" class="has-header">
+        <div class="list card" id="home-card21">
       <ion-item class="item-divider" id="home-list-item-divider48"> Juntadas coordinadas</ion-item>
       <ion-item class="item-icon-left item-icon-right" id="home-list-item98" ui-sref="tabsController.arrangedJuntada()">
         <i class="icon ion-paper-airplane"></i>Reunion TP

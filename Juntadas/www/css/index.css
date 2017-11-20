@@ -95,3 +95,24 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+.custom-icon, icon-notification-true, icon-notification-false {
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-notification-true {
+    mask-image: url(../icons/notification-true.png);
+}
+
+.icon-notification-false {
+    mask-image: url(../icons/notification-false.png);
+}
