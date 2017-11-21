@@ -1,7 +1,14 @@
 {
-    "name": "Juntadas",
-    "version": "1.0.0",
-    "private": true,
-    "dependencies": {
+  "name": "Juntadas",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-geolocation": "^2.4.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-geolocation": {}
     }
+  }
 }

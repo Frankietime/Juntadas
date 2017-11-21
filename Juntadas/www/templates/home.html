@@ -1,38 +1,36 @@
 <ion-view title="Home" id="page2" style="background-color:#FFFFFF;">
-    <ion-floating-button click="myEvent()" has-footer="false" button-color="rgb(177, 42, 201)" icon="ion-plus" icon-color="#fff">
-        <ion-floating-item icon="ion-camera" click="myEvent()"></ion-floating-item>
-        <ion-floating-item icon="ion-person" click="myEvent()"></ion-floating-item>
+    <ion-floating-button id="addJuntada" click="location.href='#/page1/page3'" button-color="rgb(177, 42, 201)" icon="ion-plus" icon-color="#fff">        
     </ion-floating-button>
     <ion-content padding="true" class="has-header">
-        <div class="list card" id="home-card21">
-      <ion-item class="item-divider" id="home-list-item-divider48"> Juntadas coordinadas</ion-item>
-      <ion-item class="item-icon-left item-icon-right" id="home-list-item98" ui-sref="tabsController.arrangedJuntada()">
-        <i class="icon ion-paper-airplane"></i>Reunion TP
-        <span class="item-note">Mie 27 - 09 -17 / 15:30 - 18:30</span>
-        <i class="icon ion-android-sunny"></i>
-      </ion-item>
-    </div>
-    <div class="list card" id="home-card24">
-      <ion-item class="item-divider" id="home-list-item-divider49"> Juntadas en coordinación</ion-item>
-      <ion-item class="item-icon-left item-icon-right" id="home-list-item103" ui-sref="tabsController.phaseA()">
-        <i class="icon ion-flash"></i>Ensayo 4tet
-        <span class="item-note">2do intento</span>
-        <i class="icon ion-android-calendar"></i>
-      </ion-item>
-      <ion-item class="item-icon-left item-icon-right" id="home-list-item104" ui-sref="tabsController.phaseB()">
-        <i class="icon ion-beer"></i>Birrita con lo pibe
-        <i class="icon ion-android-time"></i>
-      </ion-item>
-      <ion-item class="item-icon-left item-icon-right" id="home-list-item107" ui-sref="tabsController.themeExample()">
-        <i class="icon ion-erlenmeyer-flask-bubbles"></i>Ensamble Contemporaneo
-        <span class="item-note">3er intento</span>
-        <i class="icon ion-android-calendar"></i>
-      </ion-item>
-      <ion-item class="item-icon-left item-icon-right assertive" id="home-list-item108" ui-sref="tabsController.votation()">
-        <i class="icon ion-levels"></i>Produ disco
-        <span class="item-note">en votacion...</span>
-        <i class="icon ion-android-time"></i>
-      </ion-item>
-    </div>
+        <div class="list" id="home-card21">
+            <ion-item class="item-divider" style="background-color:#fdda8d; border-color:white; color: black;" id="home-list-item-divider48">Juntadas Coordinadas</ion-item>
+            <ion-item class="item-icon-right" style="font-weight:600;" id="home-list-item98" ui-sref="tabsController.arrangedJuntada()">
+            Reunion TP
+            <span class="item-note">Mie 27 - 09 -17 / 15:30 - 18:30</span>
+            <i class="icon ion-android-sunny"></i>
+            </ion-item>
+            <ion-item class="item-divider"  style="background-color:#fdda8d; border-color:white; color: black;" id="home-list-item-divider49">Juntadas en Coordinación</ion-item>
+            <ion-item class="item-icon-right" style="font-weight:600;" id="home-list-item103" ui-sref="tabsController.phaseA()">
+                Ensayo 4tet
+                <span class="item-note">2do intento</span>
+                <i class="icon ion-android-calendar"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" style="font-weight:600;" id="home-list-item104" ui-sref="tabsController.phaseB()">
+                Birrita con lo pibe
+                <i class="icon ion-android-time"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" style="font-weight:600;" id="home-list-item107" ui-sref="tabsController.themeExample()">
+                Ensamble Contemporaneo
+                <span class="item-note">3er intento</span>
+            <i class="icon ion-android-calendar"></i>
+            </ion-item>
+            <ion-item class="item-icon-right assertive" style="font-weight:600;" id="home-list-item108" ui-sref="tabsController.votation()">
+                Produ disco
+                <span class="item-note">en votacion...</span>
+                <i class="icon ion-android-time"></i>
+            </ion-item>
+            <!--<a ui-sref="tabsController.addJuntadaDataStep()" id="home-button3" style="border-radius:1px 1px 1px 1px;" class="button button-dark button-block icon-left ion-android-add-circle">Añadir Juntada</a>-->
+            <div class="content-margin"></div>
+        </div>
   </ion-content>
 </ion-view>

@@ -9443,7 +9443,8 @@ a.button {
  * --------------------------------------------------
  */
 .padding {
-  padding: 10px; }
+  padding: 30px 0px 150px; 
+}
 
 .padding-top,
 .padding-vertical {
@@ -9811,3 +9812,14 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+/* Custom CSS */
+
+.content-margin {
+    margin: 0px 0px 100px;
+}
+.item .item-dashboard {
+    font-weight:600; 
+    color:hotpink;
+}
+

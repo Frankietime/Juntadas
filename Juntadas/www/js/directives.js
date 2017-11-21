@@ -1,5 +1,11 @@
 angular.module('app.directives', [])
 
-.directive('blankDirective', [function(){
+.directive('map', [function(){
+    return {
+        
+        template: '<div id="map" style="height:150px;" data-tap-disabled="true"></div>'
+    };
+    }])
+.directive('tabsDirective', [function () {
 
 }]);
