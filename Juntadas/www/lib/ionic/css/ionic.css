@@ -6422,6 +6422,7 @@ button.item.item-button-right {
 .item-note {
   float: right;
   color: #aaa;
+  font-family: 'Helvetica';
   font-size: 14px; }
 
 .item-left-editable .item-content,
@@ -9819,7 +9820,9 @@ a.button {
     margin: 0px 0px 100px;
 }
 .item .item-dashboard {
-    font-weight:600; 
-    color:hotpink;
+    font-weight:800;
 }
-
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   opacity: 1;
+}

@@ -1,50 +1,52 @@
 <ion-view title="Add Juntada - Data Step" id="page3" style="background-color:#FFFFFF;">
-  <ion-content padding="true" class="has-header">
+  <ion-content padding="false" class="has-header">       
     <form id="addJuntadaDataStep-form1" class="list">
-      <label class="item item-input" id="addJuntadaDataStep-input2" name="name">
-        <span class="input-label">Nombre</span>
-        <input type="text" placeholder="">
+      <ion-item>   
+        <label id="addJuntadaDataStep-input2" name="name">
+          <span class="input-label">Nombre</span>
+          <input type="text" placeholder="">
+        </label>
+        <a ui-sref="tabsController.addGuest()" id="addJuntadaDataStep-button2" style="color:#000000;" class="button button-small button-calm button-outline button-block icon-left ion-android-person-add">Agregar Invitados</a>
+      </ion-item>
+        <ion-item class="item-divider" id="addJuntadaDataStep-list-item-divider23"> </ion-item>
+      <ion-item>
+        <label class="item item-input" id="addJuntadaDataStep-search1" name="lugar">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="Dirección">
+        </label>
+      </ion-item>
+      <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input5">
+          <span class="input-label">Seleccionar semana de la juntada</span>
+          <input type="date" placeholder="">
       </label>
-      <label class="item item-select" id="addJuntadaDataStep-select1">
-        <span class="input-label">Icono de la juntada</span>
-        <select>
-          <option>Icon 1</option>
-          <option>Icon 2</option>
-          <option>Icon 3</option>
-          <option>Icon 20</option>
-        </select>
-      </label>
-      <label class="item item-select" id="addJuntadaDataStep-select2">
-        <span class="input-label">Fondo</span>
-        <select>
-          <option>Standard</option>
-          <option>Violeta</option>
-          <option>Gris Oscuro</option>
-          <option>Azul Oscuro</option>
-          <option>Blanco</option>
-        </select>
-      </label>
-      <ion-item class="item-divider" id="addJuntadaDataStep-list-item-divider23"> </ion-item>
-      <label class="item item-input" id="addJuntadaDataStep-search1" name="lugar">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="search" placeholder="Dirección">
-      </label>
-      <label class="item item-input" id="addJuntadaDataStep-input12" name="duracion">
+      <ion-item>
+          <button id="addJuntadaDataStep-button8" style="color:#000000;" class="button button-small button-calm button-block button-outline icon-left ion-android-calendar">Añadir más días</button>
+      </ion-item>
+      
+      <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
         <span class="input-label">Duración de la juntada</span>
-        <input type="time" placeholder="">
+        <input type="number" step="1" min="0" max="24" placeholder="0">horas<input type="number" step="5" min="0" max="55" placeholder="0">minutos
       </label>
       <ion-checkbox id="addJuntadaDataStep-checkbox1">Duración indefinida</ion-checkbox>
-      <label class="item item-input" id="addJuntadaDataStep-input15">
-        <span class="input-label">+ / - (horas)</span>
-        <input type="number" placeholder="0">
-      </label>
-      <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input5">
-        <span class="input-label">Seleccionar semana de la juntada</span>
-        <input type="date" placeholder="">
-      </label>
-      <button id="addJuntadaDataStep-button8" class="button button-dark button-block icon-left ion-android-add-circle">Añadir más días</button>
-      <a ui-sref="tabsController.addGuest()" id="addJuntadaDataStep-button2" style="color:#000000;" class="button button-calm button-block icon-left ion-android-person-add">Agregar Invitados</a>
-      <a ui-sref="tabsController.addJuntadaLogicStep()" id="addJuntadaDataStep-button1" class="button button-balanced button-block icon ion-arrow-right-a"></a>
-    </form>
+      <div>
+        <ion-checkbox>La juntada puede extenderse</ion-checkbox>
+        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
+            <input type="number" step="1" min="0" max="24" placeholder="0">horas<input type="number" step="5" min="0" max="55" placeholder="0">minutos
+        </label>
+        <ion-checkbox>La juntada puede reducirse</ion-checkbox>
+        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
+            <input type="number" step="1" min="0" max="24" placeholder="0">horas<input type="number" step="5" min="0" max="55" placeholder="0">minutos
+        </label>
+      </div>
+      <div class="content-margin"></div>
+    </form>  
   </ion-content>
+  <!-- scrollable element -->
+  <div fab-scroll-container>
+    </div>
+    <!-- ion-fab directive must be after scrollable element -->
+    <a href="#/page1/page11">
+        <ion-fab style="background-color:green;" class="ion-arrow-right-a" id="fab">
+        </ion-fab>
+    </a>
 </ion-view>
