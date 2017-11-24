@@ -1,43 +1,88 @@
 <ion-view title="Add Juntada - Data Step" id="page3" style="background-color:#FFFFFF;">
   <ion-content padding="false" class="has-header">       
-    <form id="addJuntadaDataStep-form1" class="list">
+    
+    <form ng-controller="addJuntadaDataStepCtrl" id="addJuntadaDataStep-form1" class="list">
+      
       <ion-item>   
         <label id="addJuntadaDataStep-input2" name="name">
-          <span class="input-label">Nombre</span>
-          <input type="text" placeholder="">
+          <span style="border:none; color: black; font-weight:600;" class="input-label">Nombre</span>
+          <input type="text" placeholder="" ng-model="juntada.name">
         </label>
-        <a ui-sref="tabsController.addGuest()" id="addJuntadaDataStep-button2" style="color:#000000;" class="button button-small button-calm button-outline button-block icon-left ion-android-person-add">Agregar Invitados</a>
+        <a ui-sref="tabsController.addGuest()" id="addJuntadaDataStep-button2" style="color:#000000;" class="button button-small button-calm button-outline button-block icon-left ion-android-person-add">
+          Invitados
+        </a>
       </ion-item>
-        <ion-item class="item-divider" id="addJuntadaDataStep-list-item-divider23"> </ion-item>
+      
       <ion-item>
         <label class="item item-input" id="addJuntadaDataStep-search1" name="lugar">
           <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" placeholder="Dirección">
+          <input type="search" placeholder="Dirección" ng-model="juntada.address">
         </label>
-      </ion-item>
-      <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input5">
-          <span class="input-label">Seleccionar semana de la juntada</span>
-          <input type="date" placeholder="">
-      </label>
-      <ion-item>
-          <button id="addJuntadaDataStep-button8" style="color:#000000;" class="button button-small button-calm button-block button-outline icon-left ion-android-calendar">Añadir más días</button>
       </ion-item>
       
-      <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
-        <span class="input-label">Duración de la juntada</span>
-        <input type="number" step="1" min="0" max="24" placeholder="0">horas<input type="number" step="5" min="0" max="55" placeholder="0">minutos
+      <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input5">
+          <span style="border:none; color: black; font-weight:600;" class="input-label">
+            ¿Entre qué días puede suceder?
+          </span>
+          <div><br/>Desde<input type="date" placeholder="" ng-model="juntada.daysRange.from"><br/></div>
+          <div>Hasta<input type="date" placeholder="" ng-model="juntada.daysRange.to"><br/></div>
       </label>
-      <ion-checkbox id="addJuntadaDataStep-checkbox1">Duración indefinida</ion-checkbox>
-      <div>
-        <ion-checkbox>La juntada puede extenderse</ion-checkbox>
-        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
-            <input type="number" step="1" min="0" max="24" placeholder="0">horas<input type="number" step="5" min="0" max="55" placeholder="0">minutos
-        </label>
-        <ion-checkbox>La juntada puede reducirse</ion-checkbox>
-        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
-            <input type="number" step="1" min="0" max="24" placeholder="0">horas<input type="number" step="5" min="0" max="55" placeholder="0">minutos
-        </label>
+      <!-- <ion-item>
+          <button id="addJuntadaDataStep-button8" style="color:#000000;" class="button button-small button-calm button-block button-outline icon-left ion-android-calendar">
+            Añadir más días
+          </button>
+      </ion-item> -->
+      
+      <!-- Duracion de la Juntada -->
+      <div ng-class="{animationtarget: !juntada.timelessJuntada.boolean}" ng-show="!juntada.timelessJuntada.boolean">
+            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
+                <span style="border:none; color: black; font-weight:600;" class="input-label">Duración de la juntada</span>
+            </label>
+            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
+                <input type="number" step="1" min="0" max="24" ng-model="juntada.duration.hours">horas
+            </label>
+            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
+                <input type="number" step="5" min="0" max="55" ng-model="juntada.duration.minutes">minutos
+            </label>
+        </div>
+
+        <!-- Duracion minima de la Juntada -->
+      <div ng-class="{animationtarget: juntada.timelessJuntada.boolean}" ng-show="juntada.timelessJuntada.boolean">
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
+              <span style="border:none; color: black; font-weight:600;" class="input-label">No hay duración exacta, pero durará un minimo de...</span>
+          </label>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
+              <input type="number" step="1" min="0" max="24" ng-model="juntada.timelessJuntada.duration.hours">horas
+          </label>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
+              <input type="number" step="5" min="0" max="55" ng-model="juntada.timelessJuntada.duration.minutes">minutos
+          </label>
       </div>
+
+      <ion-checkbox id="addJuntadaDataStep-checkbox1" ng-model="juntada.timelessJuntada.boolean">
+        No se la duración exacta
+      </ion-checkbox>
+      
+      <!-- La Juntada puede extenderse -->
+        <ion-checkbox ng-model="juntada.duration.canBeExtended.boolean" ng-show="!juntada.timelessJuntada.boolean" >La juntada puede extenderse</ion-checkbox>
+        <div ng-class="{animationtarget: juntada.duration.canBeExtended.boolean}" ng-show="juntada.duration.canBeExtended.boolean">
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="extDuracionHoras">
+              <input type="number" step="1" min="0" max="24" ng-model="juntada.duration.canBeExtended.hours">horas
+          </label>
+          <label class="item item-input item-stacked-label" id="at12" name="extDuracionHorasMinutos">
+            <input type="number" step="5" min="0" max="55" ng-model="juntada.duration.canBeExtended.minutes">minutos
+          </label>
+        </div>
+        <!-- La Juntada puede reducirse -->
+        <ion-checkbox ng-model="juntada.duration.canBeReduced.boolean" ng-show="!juntada.timelessJuntada.boolean">La juntada puede reducirse</ion-checkbox>
+        <div ng-class="{animationtarget: juntada.duration.canBeReduced.boolean}" ng-show="juntada.duration.canBeReduced.boolean">
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="redDuracionHoras">
+              <input type="number" step="1" min="0" max="24" ng-model="juntada.duration.canBeReduced.hours">horas
+          </label>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="redDuracionMinutos">
+              <input type="number" step="5" min="0" max="55" ng-model="juntada.duration.canBeReduced.minutes">minutos
+          </label>
+        </div>
       <div class="content-margin"></div>
     </form>  
   </ion-content>

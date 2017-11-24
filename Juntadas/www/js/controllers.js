@@ -13,8 +13,37 @@ angular.module('app.controllers', [])
         // You can include any angular dependencies as parameters for this function
         // TIP: Access Route Parameters for your page via $stateParams.parameterName
         function ($scope, $stateParams) {
-
-
+            $scope.juntada = {
+                name: '',
+                guests: {},
+                address: '',
+                daysRange: {
+                    from: '',
+                    to: ''
+                },
+                weekExtension: '',
+                duration: {
+                    hours: 0,
+                    minutes: 0,
+                    canBeExtended: {
+                        boolean: false,
+                        hours: 0,
+                        minutes: 0
+                    },
+                    canBeReduced: {
+                        boolean: false,
+                        hours: 0,
+                        minutes: 0
+                    }
+                },
+                timelessJuntada: {
+                    boolean: false,
+                    duration: {
+                        hours: 0,
+                        minutes: 0
+                    }
+                }
+            };
         }])
 
     .controller('addJuntadaLogicStepCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
