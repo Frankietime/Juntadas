@@ -9,41 +9,10 @@ angular.module('app.controllers', [])
 
         }])
 
-    .controller('addJuntadaDataStepCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-        // You can include any angular dependencies as parameters for this function
-        // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams) {
-            $scope.juntada = {
-                name: '',
-                guests: {},
-                address: '',
-                daysRange: {
-                    from: '',
-                    to: ''
-                },
-                weekExtension: '',
-                duration: {
-                    hours: 0,
-                    minutes: 0,
-                    canBeExtended: {
-                        boolean: false,
-                        hours: 0,
-                        minutes: 0
-                    },
-                    canBeReduced: {
-                        boolean: false,
-                        hours: 0,
-                        minutes: 0
-                    }
-                },
-                timelessJuntada: {
-                    boolean: false,
-                    duration: {
-                        hours: 0,
-                        minutes: 0
-                    }
-                }
-            };
+    .controller('addJuntadaCtrl', ['$scope', 'newJuntadaService',
+        function ($scope, newJuntadaService) {
+            $scope.juntada = newJuntadaService.getCurrentNewJuntada();
+            $scope.guests = $scope.juntada.guests;
         }])
 
     .controller('addJuntadaLogicStepCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -134,11 +103,20 @@ angular.module('app.controllers', [])
 
         }])
 
-    .controller('addGuestCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-        // You can include any angular dependencies as parameters for this function
-        // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams) {
+    .controller('addGuestsCtrl', ['$scope', 'newJuntadaService',
+        function ($scope, newJuntadaService) {
+            // retrieved data
+            var data = [{
+                contacts: [{ userId: 1, name: 'Franco Donadio' }, { userId: 2, name: 'Guido Donadio' }, { userId: 3, name: 'Santiago Zárate' }]
+            }];
 
+            $scope.contacts = data[0].contacts;
+            $scope.guests = {};
+
+            // use service to store juntada data between views/controllers
+            $scope.add = function (guests) {
+                newJuntadaService.add(guests);
+            }
 
         }])
 

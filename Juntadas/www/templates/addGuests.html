@@ -1,0 +1,25 @@
+<ion-view ng-controller="addGuestsCtrl as addGuests" title="Add Guest" id="page9" style="background-color:#FFFFFF;">
+  <ion-content padding="true" class="has-header">
+        
+    <form ng-submit="addGuests.add(addGuests.guests)" id="addGuest-form5" class="list">
+        <label class="item item-input" id="addGuest-search2">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Buscar invitado o grupo">
+        </label>
+        <div class="button-bar bar-light">
+            <button ui-sref="tabsController.addJuntada()" type="submit" class="button button-large  button-icon">
+              <i class="ion-checkmark-round"></i>
+            </button>
+            <button class="button button-large button-icon">
+                <i class="ion-trash-b"></i>
+            </button>        
+          </div>
+      
+      <ion-list >
+          <ion-item ng-repeat="(key, value) in contacts">
+            {{ value.name }}<ion-checkbox ng-model="guests[key]" ng-true-value="{{value}}"></ion-checkbox>
+            {{ guests }}
+        </ion-list>
+    </form>
+  </ion-content>
+</ion-view>

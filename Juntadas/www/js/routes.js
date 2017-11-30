@@ -19,12 +19,12 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('tabsController.addJuntadaDataStep', {
+  .state('tabsController.addJuntada', {
     url: '/page3',
     views: {
       'tab3': {
         templateUrl: 'templates/addJuntadaDataStep.html',
-        controller: 'addJuntadaDataStepCtrl'
+        controller: 'addJuntadaCtrl'
       }
     }
   })
@@ -141,12 +141,12 @@ angular.module('app.routes', [])
     controller: 'specificScheduleListConflictCtrl'
   })
 
-  .state('tabsController.addGuest', {
+  .state('tabsController.addGuests', {
     url: '/page9',
     views: {
       'tab3': {
-        templateUrl: 'templates/addGuest.html',
-        controller: 'addGuestCtrl'
+        templateUrl: 'templates/addGuests.html',
+        controller: 'addGuestsCtrl'
       }
     }
   })

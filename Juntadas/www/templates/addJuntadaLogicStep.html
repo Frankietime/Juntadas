@@ -1,44 +1,115 @@
 <ion-view title="Add Juntada - Logic Step" id="page11" style="background-color:#FFFFFF;">
   <ion-content padding="true" class="has-header">
+    
     <form id="addJuntadaLogicStep-form7" class="list">
-      <ion-item id="addJuntadaLogicStep-list-item112">Es necesario que recibas y despidas</ion-item>
-      <ion-toggle toggle-class="toggle-assertive" id="addJuntadaLogicStep-toggle23">a los invitados personalmente?</ion-toggle>
-      <button id="addJuntadaLogicStep-button9" class="button button-calm button-block icon-left ion-ios-contact">Agregar anfitrión</button>
-      <button id="addJuntadaLogicStep-button10" class="button button-light button-block">Más opciones (recomendado)</button>
+      
+      <ion-list>
+        <ion-item id="addJuntadaLogicStep-list-item112">Es necesario que recibas y despidas</ion-item>
+        <ion-checkbox class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">a los invitados personalmente?</ion-toggle>
+      </ion-list>
+      <ion-item>
+      <a ui-sref="tabsController.addGuest()" id="addJuntadaDataStep-button2" style="color:#000000;" class="button button-small button-calm button-outline button-block icon-left ion-android-person-add">
+        Agregar más anfitriones
+      </a>
+      </ion-item>
+      <button id="addJuntadaLogicStep-button10" class="button button-light button-block">
+        Más opciones (recomendado)
+      </button>
+      
       <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider35"> </ion-item>
-      <ion-toggle toggle-class="toggle-assertive" id="addJuntadaLogicStep-toggle21">Aceptas llegadas tarde?</ion-toggle>
-      <ion-item class="range range-positive" id="addJuntadaLogicStep-range3">Cuantos invitados?
-        <input type="range" value="50" min="0" max="100" step="1">
-      </ion-item>
-      <label class="item item-input" id="addJuntadaLogicStep-input21">
-        <span class="input-label">Cuanto tiempo?</span>
-        <input type="time" placeholder="">
-      </label>
+      
+      <!-- Llegadas temprano -->
+      <ion-checkbox ng-model="juntadas.options.lateArrivals.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
+        Aceptas llegadas tarde?
+      </ion-checkbox>      
+      <div ng-show="juntadas.options.lateArrivals.boolean" ng-class="{animationtarget: juntadas.options.lateArrivals.boolean}">
+          <ion-item id="addJuntadaLogicStep-range3">
+            <input type="number" step="1" ng-model="juntada.options.lateArrivals.numberOfGuests"><p style="font-style:italic;">cuantos invitados?</p>
+          </ion-item>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
+              <input type="number" step="1" min="0" max="24" ng-model="juntada.options.lateArrivals.duration.hours"><p style="font-style:italic;">horas</p>
+          </label>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
+              <input type="number" step="5" min="0" max="55" ng-model="juntada.options.lateArrivals.duration.minutes"><p style="font-style:italic;">minutos</p>
+          </label>
+      </div>
       <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider32"> </ion-item>
-      <ion-toggle toggle-class="toggle-assertive" id="addJuntadaLogicStep-toggle22">Aceptas salidas temprano?</ion-toggle>
-      <ion-item class="range range-positive" id="addJuntadaLogicStep-range4">Cuantos invitados?
-        <input type="range" value="50" min="0" max="100" step="1">
-      </ion-item>
-      <label class="item item-input" id="addJuntadaLogicStep-input22">
-        <span class="input-label">Cuanto tiempo?</span>
-        <input type="time" placeholder="">
-      </label>
+      
+      <!-- Salidas temprano -->
+      <ion-checkbox ng-model="juntadas.options.earlyDepartures.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
+        Aceptas salidas temprano?
+      </ion-checkbox>
+      <div ng-show="juntadas.options.earlyDepartures.boolean" ng-class="{animationtarget: juntadas.options.earlyDepartures.boolean}">
+          <ion-item id="addJuntadaLogicStep-range3">
+            <input type="number" step="1" ng-model="juntada.options.earlyDepartures.numberOfGuests"><p style="font-style:italic;">cuantos invitados?</p>
+          </ion-item>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
+              <input type="number" step="1" min="0" max="24" ng-model="juntada.options.earlyDepartures.duration.hours"><p style="font-style:italic;">horas</p>
+          </label>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
+              <input type="number" step="5" min="0" max="55" ng-model="juntada.options.earlyDepartures.duration.minutes"><p style="font-style:italic;">minutos</p>
+          </label>
+      </div>
+
       <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider33"> </ion-item>
-      <ion-toggle toggle-class="toggle-assertive" id="addJuntadaLogicStep-toggle24">Puede haber inasistencias?</ion-toggle>
-      <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle25">Cuantos? / Quienes?</ion-toggle>
-      <ion-item class="range range-positive" id="addJuntadaLogicStep-range5">max. inasistencias
-        <input type="range" value="50" min="0" max="100" step="1">
-      </ion-item>
-      <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider34"> </ion-item>
-      <ion-item id="addJuntadaLogicStep-list-item126">Hay invitados que no </ion-item>
-      <ion-toggle toggle-class="toggle-assertive" id="addJuntadaLogicStep-toggle26">puedan faltar?</ion-toggle>
-      <ion-item class="item-avatar" id="addJuntadaLogicStep-list-item127">
-        <h2>Invitado</h2>
-      </ion-item>
-      <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle27">No puede llegar tarde</ion-toggle>
-      <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle28">No puede irse antes</ion-toggle>
-      <button id="addJuntadaLogicStep-button7" class="button button-balanced button-block">Crear Juntada!</button>
+
+      <ion-checkbox ng-model="juntadas.options.absences.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
+        Puede haber inasistencias?
+      </ion-checkbox>
+      <div ng-show="juntadas.options.absences.boolean">
+        <ion-toggle ng-model="juntadas.options.absences.howManyOrWho">
+            <b ng-show="!juntadas.options.absences.howManyOrWho">Cuantas inasistencias?</b>
+            <b ng-show="juntadas.options.absences.howManyOrWho">Quienes pueden faltar?</b>
+        </ion-toggle>
+        <div ng-show="!juntadas.options.absences.howManyOrWho">
+          <ion-item id="addJuntadaLogicStep-range5">
+            <input value="0" type="number" step="1"><p style="font-style:italic;">inasistencias</p>
+          </ion-item>
+        </div>
+        <div ng-show="juntadas.options.absences.howManyOrWho">
+            <ion-list >
+              <ion-item ng-repeat="guest in juntadas.guests">
+                {{ guest.name }}<ion-checkbox ng-model="guest.canBeAbscent" style="display:inline;"></ion-checkbox>              
+              </ion-item>
+            </ion-list>
+        </div>
+
+        <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider33"> </ion-item>
+
+        <ion-item id="addJuntadaLogicStep-list-item126">Hay invitados que no </ion-item>
+        <ion-checkbox ng-model="juntadas.options.cantBeAbsent.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
+            pueden faltar?
+          </ion-checkbox>
+        <ion-item ng-show="juntadas.options.cantBeAbsent.boolean" class="item-avatar" id="addJuntadaLogicStep-list-item127">
+          <ion-list >
+            <ion-item ng-repeat="guest in juntadas.guests">
+              {{ guest.name }}<ion-checkbox ng-model="guest.cantBeAbscent" style="display:inline;"></ion-checkbox>              
+            </ion-item>
+          </ion-list>
+        </ion-item>
+      </div>
+      
+
+
+      
+      
+      
+      <!-- NO ENTRA EN MVP
+      
+        <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle27">No puede llegar tarde</ion-toggle>
+        <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle28">No puede irse antes</ion-toggle>
+      
+      -->
+    <div class="content-margin"></div>
     </form>
   </ion-content>
 </ion-content>
+ <!-- scrollable element -->
+ <div fab-scroll-container>
+</div>
+<!-- ion-fab directive must be after scrollable element -->
+<a href="#/page1/page11">
+    <ion-fab style="background-color:rgb(90, 170, 90);" class="ion-checkmark-round" id="fab">
+    </ion-fab>
+</a>
 </ion-view>

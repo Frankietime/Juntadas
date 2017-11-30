@@ -5694,7 +5694,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
  * --------------------------------------------------
  */
 .item {
-  border-color: #ddd;
+  border-color: rgb(255, 255, 255);
   background-color: #fff;
   color: #444;
   position: relative;
@@ -9847,6 +9847,62 @@ search::-webkit-input-placeholder {
     color:black;
     font-size:medium;
     text-align: center;
+}
+
+@font-face {
+  font-family: 'JollyGoodSans';
+  src: url('../../../fonts/JollyGoodSans-Basic.otf')
+}
+
+@font-face {
+  font-family: 'Coming Soon';
+  src: url('../../../fonts/ComingSoon-Regular.ttf')
+}
+
+@font-face {
+  font-family: 'Just Me Again Down Here';
+  src: url('../../../fonts/JustMeAgainDownHere.ttf')
+}
+
+@font-face {
+  font-family: 'Schoolbell';
+  src: url('../../../fonts/Schoolbell-Regular.ttf')
+}
+
+@font-face {
+  font-family: 'Chewy';
+  src: url('https://fonts.googleapis.com/css?family=Chewy')
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../../fonts/OpenSans-Regular.ttf')
+}
+
+.juntadas-font-2 {
+  font-family: 'JollyGoodSans';
+}
+
+.juntadas-font-3 {
+  font-family: 'Coming Soon';
+}
+
+.juntadas-font-4 {
+  font-family: 'Just Me Again Down Here';
+  font-size: 15pt;
+}
+
+.juntadas-font-5 {
+  font-family: 'Open Sans';
+}
+
+.juntadas-font-1 {
+  font-family: 'Schoolbell';
+}
+
+.juntadas-font-0 {
+  font-family: 'Schoolbell';
+  font-size: 14pt;
 }
 /* ANIMATIONS */
 .animationtarget {
