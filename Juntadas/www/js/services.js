@@ -130,7 +130,7 @@ angular.module('app.services', [])
 
             // we use a checkbox to input new guests
             var cleanedGuests = cleanDataService.cleanCheckboxWorkaround(guests);
-            juntada.guests = cleanedGuests[0];
+            juntada.guests = cleanedGuests;
         };
 
         return service;
@@ -144,17 +144,17 @@ angular.module('app.services', [])
         var service = {};
 
         // workaround used to save in an object every checked item in a checkbox list, when unchecking, the item becomes a 'false' boolean
-        service.cleanCheckboxWorkaround = function (uglyData) {
+        service.cleanCheckboxWorkaround = function (data) {
             var cleanedData = [];
 
-            angular.forEach(item in data, function (key, value) {
-                if (typeof value === 'boolean' && !value)
-                {
+            angular.forEach(data, function (value) {
+                if (typeof value === 'boolean' && !value) {
                     return;
                 } else {
                     cleanedData.push(value);
                 }
-            })
+            });
+            return cleanedData;
         };
 
         return service;

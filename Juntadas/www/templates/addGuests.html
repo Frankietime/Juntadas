@@ -1,25 +1,71 @@
 <ion-view ng-controller="addGuestsCtrl as addGuests" title="Add Guest" id="page9" style="background-color:#FFFFFF;">
   <ion-content padding="true" class="has-header">
-        
-    <form ng-submit="addGuests.add(addGuests.guests)" id="addGuest-form5" class="list">
+    
+    <form id="addGuest-form5" class="list">
+      <div>
         <label class="item item-input" id="addGuest-search2">
             <i class="icon ion-search placeholder-icon"></i>
             <input type="search" placeholder="Buscar invitado o grupo">
         </label>
         <div class="button-bar bar-light">
-            <button ui-sref="tabsController.addJuntada()" type="submit" class="button button-large  button-icon">
-              <i class="ion-checkmark-round"></i>
-            </button>
-            <button class="button button-large button-icon">
-                <i class="ion-trash-b"></i>
-            </button>        
-          </div>
+          <button ui-sref="tabsController.addJuntada()" ng-click="addGuests()" type="submit" class="button button-large  button-icon">
+            <i class="ion-checkmark-round"></i>
+          </button>
+          <button class="button button-large button-icon">
+              <i class="ion-trash-b"></i>
+          </button>        
+        </div>
+        
+      </div>
+      <ul class="list">
+        <li ng-show="value.name" class="item item-checkbox" ng-repeat="(key, value) in guests">
+          <div class="row responsive-md animationtarget">
+            <!--- TODO: AGREGAR IMAGEN -->
+            <div class="col">{{ value.name }}</div>
+            <div class="col">
+              <label ng-show="value.name" class="checkbox" style="left:auto;right:auto;">
+                Anfitrion
+                <input ng-model="guests[key].host" ng-true-value="true" type="checkbox">            
+              </label>
+            </div>
+          </div>       
+        </li>
+        <ion-item class="item-divider"></ion-item>  
+      </ul>
       
-      <ion-list >
-          <ion-item ng-repeat="(key, value) in contacts">
-            {{ value.name }}<ion-checkbox ng-model="guests[key]" ng-true-value="{{value}}"></ion-checkbox>
-            {{ guests }}
-        </ion-list>
+
+      <!-- <ion-list>
+        <label class="checkbox"> 
+          <ion-item class="item-avatar-right" ng-repeat="(key, value) in guests">
+              
+              <i class="ion-user"></i>
+                {{ value.name }}<ion-checkbox ng-model="guests[key].host" ng-true-value="true" title="Anfitrión">Anfitrión</ion-checkbox>
+                <i class="icon-left ion-person"></i>
+          </ion-item>
+        </label>
+      </ion-list> -->
+        
+      <ul class="list">
+        <li class="item item-checkbox" ng-repeat="(key, value) in contacts">
+          <div class="row responsive-md">
+            <!--- TODO: AGREGAR IMAGEN -->
+            <div class="col">{{ value.name }}</div>
+            <div class="col">
+              <label class="checkbox" style="left:auto;right:auto;">
+                
+                <input ng-model="guests[key]" ng-true-value="{{value}}" type="checkbox" class="balanced">            
+              </label>
+            </div>
+          </div>         
+        </li>        
+      </ul>
+
+      <!-- <ion-list >
+        <ion-item ng-repeat="(key, value) in contacts">
+          <div>
+          <p>{{ value.name }}<ion-checkbox ng-model="guests[key]" ng-true-value="{{value}}"></ion-checkbox></p>
+          </div>            
+      </ion-list> -->
     </form>
   </ion-content>
 </ion-view>

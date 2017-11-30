@@ -13,13 +13,17 @@ angular.module('app.controllers', [])
         function ($scope, newJuntadaService) {
             $scope.juntada = newJuntadaService.getCurrentNewJuntada();
             $scope.guests = $scope.juntada.guests;
+            
         }])
 
-    .controller('addJuntadaLogicStepCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-        // You can include any angular dependencies as parameters for this function
-        // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams) {
+    .controller('addJuntadaLogicStepCtrl', ['$scope', 'newJuntadaService',
+        function ($scope, newJuntadaService) {
 
+            $scope.juntada = newJuntadaService.getCurrentNewJuntada();
+
+            // TODO: add momentjs for formatting dates and autocompleting daysRangeTo date
+            $scope.daysRangeTo = $scope.juntada.daysRange.from;
+           
 
         }])
 
@@ -111,11 +115,15 @@ angular.module('app.controllers', [])
             }];
 
             $scope.contacts = data[0].contacts;
-            $scope.guests = {};
+
+            $scope.juntada = newJuntadaService.getCurrentNewJuntada();
+
+            // if guests where already set, get them
+            $scope.guests = $scope.juntada.guests ? $scope.juntada.guests : {};
 
             // use service to store juntada data between views/controllers
-            $scope.add = function (guests) {
-                newJuntadaService.add(guests);
+            $scope.addGuests = function () {
+                newJuntadaService.addGuests($scope.guests);
             }
 
         }])
