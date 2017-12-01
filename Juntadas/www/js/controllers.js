@@ -21,8 +21,24 @@ angular.module('app.controllers', [])
 
             $scope.juntada = newJuntadaService.getCurrentNewJuntada();
 
-            // TODO: add momentjs for formatting dates and autocompleting daysRangeTo date
-            $scope.daysRangeTo = $scope.juntada.daysRange.from;
+            // updates daysRangeTo in scope in order to show the complete days range in UI
+            $scope.updateDate = function (from) {
+                from = moment(from);
+                var to = moment(from, "DD-MM-YYYY").add("days", 6).toDate();;
+                $scope.daysRangeTo = to;
+            }
+
+            $scope.daysRangeTo = ''
+
+            $scope.submit = function () {
+                // TODO: add code for submiting data
+
+                // delete singleton, delete data stored in $scope and clear all form inputs after submiting it's data
+                newJuntadaService.deleteCurrentNewJuntada();
+                $scope.juntada = {};
+
+                // TODO: clear all form inputs
+            }
            
 
         }])

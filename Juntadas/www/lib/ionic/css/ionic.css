@@ -9904,6 +9904,13 @@ search::-webkit-input-placeholder {
   font-family: 'Schoolbell';
   font-size: 14pt;
 }
+
+.disableditem {
+  background-color: rgb(226, 226, 226);
+  color: black;
+  font-weight: bold;
+}
+
 /* ANIMATIONS */
 .animationtarget {
     -webkit-animation: animation 1505ms linear both;

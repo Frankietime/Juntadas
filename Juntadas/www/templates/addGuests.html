@@ -28,22 +28,11 @@
                 <input ng-model="guests[key].host" ng-true-value="true" type="checkbox">            
               </label>
             </div>
+            <div class="col"><span ng-show="guests[key].host">Los anfitriones no pueden faltar a la juntada</span></div>
           </div>       
         </li>
         <ion-item class="item-divider"></ion-item>  
       </ul>
-      
-
-      <!-- <ion-list>
-        <label class="checkbox"> 
-          <ion-item class="item-avatar-right" ng-repeat="(key, value) in guests">
-              
-              <i class="ion-user"></i>
-                {{ value.name }}<ion-checkbox ng-model="guests[key].host" ng-true-value="true" title="Anfitrión">Anfitrión</ion-checkbox>
-                <i class="icon-left ion-person"></i>
-          </ion-item>
-        </label>
-      </ion-list> -->
         
       <ul class="list">
         <li class="item item-checkbox" ng-repeat="(key, value) in contacts">
@@ -59,13 +48,6 @@
           </div>         
         </li>        
       </ul>
-
-      <!-- <ion-list >
-        <ion-item ng-repeat="(key, value) in contacts">
-          <div>
-          <p>{{ value.name }}<ion-checkbox ng-model="guests[key]" ng-true-value="{{value}}"></ion-checkbox></p>
-          </div>            
-      </ion-list> -->
     </form>
   </ion-content>
 </ion-view>
