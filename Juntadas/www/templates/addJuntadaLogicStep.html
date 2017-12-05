@@ -1,170 +1,193 @@
 <ion-view title="" id="page11" style="background-color:#FFFFFF;">
   <ion-content padding="true" class="has-header">
       <div class="bar bar-header bar-light">
-          <h1 class="title">{{juntada.name}}</h1>
-        </div>
+        <h1 class="title">{{juntada.name}}</h1>
+      </div>
     <form id="addJuntadaLogicStep-form7" class="list">
-      <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input5">
-        <span style="border:none; color: black; font-weight:600;" class="input-label">
-          Seleccionar rango de 7 días
-        </span>
-        <div><br/>Desde<input type="date" placeholder="" ng-change="updateDate(juntada.daysRange.from)" ng-model="juntada.daysRange.from"><br/></div>
-        <div>Hasta<input disabled type="date" value="{{daysRangeTo  | date: 'yyyy-MM-dd' }}" ng-model="juntada.daysRange.to"><br/></div>
-      </label>
-      <ion-item class="item-divider"></ion-item>
-
-      <!-- <ion-item>
-          <button id="addJuntadaDataStep-button8" style="color:#000000;" class="button button-small button-calm button-block button-outline icon-left ion-android-calendar">
-            Añadir más días
-          </button>
-      </ion-item> -->
-      
-      <!-- Duracion de la Juntada -->
-      <div ng-class="{animationtarget: !juntada.timelessJuntada.boolean}" ng-show="!juntada.timelessJuntada.boolean">
-        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
-            <span style="border:none; color: black; font-weight:600;" class="input-label">Duración de la juntada</span>
-        </label>
-        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
-            <input type="number" step="1" min="0" max="24" ng-model="juntada.duration.hours"><p style="font-style:italic;">horas</p>
-        </label>
-        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
-            <input type="number" step="5" min="0" max="55" ng-model="juntada.duration.minutes"><p style="font-style:italic;">minutos</p>
+      <div class="item-divider"></div>
+      <div class="list">  
+          <label class="item item-input item-select item-positive">
+            <div class="input-label">
+              <div class="row">
+                <div class="col">Presets</div>  
+                <div class="col">
+                  <i ng-show="presetSelection == 'blank'" class="ion-document"></i>  
+                  <i ng-show="presetSelection == 'friends'" class="ion-beer"></i>
+                  <i ng-show="presetSelection == 'work'"class="ion-bowtie"></i>
+                </div>
+              </div>
+            </div>
+            <!-- TODO: armar setPreset() en directiva -->
+            <select ng-model="presetSelection" ng-change="setPreset()">
+              <option value="blank" >Juntada en blanco</option>
+              <option value="friends"><i></i>Juntada con amigos</option>
+              <option value="work"><i></i>Juntada para laburos</option>
+            </select>
+          </label>
+        </div>
+      <div ng-show="presetSelection">
+        <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input5">
+          <span style="border:none; color: black; font-weight:600;" class="input-label">
+            Seleccionar rango de 7 días
+          </span>
+          <div><br/>Desde<input type="date" placeholder="" ng-change="updateDate(juntada.daysRange.from)" ng-model="juntada.daysRange.from"><br/></div>
+          <div>Hasta<input disabled type="date" value="{{daysRangeTo  | date: 'yyyy-MM-dd' }}" ng-model="juntada.daysRange.to"><br/></div>
         </label>
         <ion-item class="item-divider"></ion-item>
-      </div>      
 
-      <!-- Duracion minima de la Juntada -->
-      <div>
-        <ion-checkbox id="addJuntadaDataStep-checkbox1" ng-model="juntada.timelessJuntada.boolean"  class="item-checkbox-right checkbox-balanced">
-            No se la duración exacta
-        </ion-checkbox>
-        <div ng-class="{animationtarget: juntada.timelessJuntada.boolean}" ng-show="juntada.timelessJuntada.boolean">
-            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
-                <span style="border:none; color: black; font-weight:600;" class="input-label">No hay duración exacta, pero durará un minimo de...</span>
-            </label>
-            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
-                <input type="number" step="1" min="0" max="24" ng-model="juntada.timelessJuntada.duration.hours"><p style="font-style:italic;">horas</p>
-            </label>
-            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
-                <input type="number" step="5" min="0" max="55" ng-model="juntada.timelessJuntada.duration.minutes"><p style="font-style:italic;">minutos</p>
-            </label>
-        </div>      
-        <ion-item class="item-divider"></ion-item>  
-      </div>        
-      
-      <!-- La Juntada puede extenderse -->
-      <div>
-        <ion-checkbox ng-model="juntada.duration.canBeExtended.boolean" ng-show="!juntada.timelessJuntada.boolean"  class="item-checkbox-right checkbox-balanced" >
-          La juntada puede extenderse
-        </ion-checkbox>
-        <div ng-show="!juntada.timelessJuntada.boolean">
-          <div ng-class="{animationtarget: juntada.duration.canBeExtended.boolean}" ng-show="juntada.duration.canBeExtended.boolean">
-            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="extDuracionHoras">
-                <input type="number" step="1" min="0" max="24" ng-model="juntada.duration.canBeExtended.hours"><p style="font-style:italic;">horas</p>
-            </label>
-            <label class="item item-input item-stacked-label" id="at12" name="extDuracionHorasMinutos">
-              <input type="number" step="5" min="0" max="55" ng-model="juntada.duration.canBeExtended.minutes"><p style="font-style:italic;">minutos</p>
-            </label>
-          </div>
+        <!-- <ion-item>
+            <button id="addJuntadaDataStep-button8" style="color:#000000;" class="button button-small button-calm button-block button-outline icon-left ion-android-calendar">
+              Añadir más días
+            </button>
+        </ion-item> -->
+        
+        <!-- Duracion de la Juntada -->
+        <div ng-class="{animationtarget: !juntada.timelessJuntada.boolean}" ng-show="!juntada.timelessJuntada.boolean">
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
+              <span style="border:none; color: black; font-weight:600;" class="input-label">Duración de la juntada</span>
+          </label>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
+              <input type="number" step="1" min="0" max="24" ng-model="juntada.duration.hours"><p style="font-style:italic;">horas</p>
+          </label>
+          <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
+              <input type="number" step="5" min="0" max="55" ng-model="juntada.duration.minutes"><p style="font-style:italic;">minutos</p>
+          </label>
           <ion-item class="item-divider"></ion-item>
-        </div>        
-      </div>   
+        </div>      
 
-      <ion-list>
-        <ion-item id="addJuntadaLogicStep-list-item112">Es necesario que recibas y despidas</ion-item>
-        <ion-checkbox class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">a los invitados personalmente?</ion-toggle>
-      </ion-list>
-      <ion-item class="item-divider"></ion-item>
-              
-      <!-- Llegadas tarde -->
-      <div>
-        <ion-checkbox ng-model="juntada.options.lateArrivals.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
-          Aceptas llegadas tarde?
-        </ion-checkbox>      
-        <div ng-show="juntada.options.lateArrivals.boolean" ng-class="{animationtarget: juntada.options.lateArrivals.boolean}">
-            <ion-item id="addJuntadaLogicStep-range3">
-              <input type="number" step="1" max="{{juntada.guests.length + 1}}" ng-model="juntada.options.lateArrivals.numberOfGuests">
-              <p style="font-style:italic;">cuantos invitados?</p>
-            </ion-item>
-            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
-                <input type="number" step="1" min="0" max="{{juntada.duration.hours}}" ng-model="juntada.options.lateArrivals.duration.hours"><p style="font-style:italic;">horas</p>
-            </label>
-            <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
-                <input type="number" step="5" min="0" max="{{juntada.duration.minutes}}" ng-model="juntada.options.lateArrivals.duration.minutes"><p style="font-style:italic;">minutos</p>
-            </label>
-        </div>
-        <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider32"> </ion-item>
-      </div>
-      
-      <!-- Inasistencias -->
-      <ion-checkbox ng-model="juntada.options.absences.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
-        Puede haber inasistencias?
-      </ion-checkbox>
-      <div ng-show="juntada.options.absences.boolean">
-        <ion-toggle ng-model="juntada.options.absences.howManyOrWho">
-            <b ng-show="!juntada.options.absences.howManyOrWho">Cuantas inasistencias?</b>
-            <b ng-show="juntada.options.absences.howManyOrWho">Quienes pueden faltar?</b>
-        </ion-toggle>
-        <div ng-show="!juntada.options.absences.howManyOrWho">
-          <ion-item id="addJuntadaLogicStep-range5">
-            <input value="0" max="" type="number" step="1"><p style="font-style:italic;">inasistencias</p>
-          </ion-item>
-        </div>
-      
-        
-        
-        <div ng-show="juntada.options.absences.howManyOrWho">
-          <ul class="list">
-            <li ng-class="{disableditem: guest.host}" class="item item-checkbox" ng-repeat="guest in juntada.guests">
-              <label class="checkbox">
-                  <input ng-disabled="guest.host" ng-model="guest.canBeAbscent" type="checkbox">            
+        <!-- Duracion minima de la Juntada -->
+        <div>
+          <ion-checkbox id="addJuntadaDataStep-checkbox1" ng-model="juntada.timelessJuntada.boolean"  class="item-checkbox-right checkbox-balanced">
+              No se la duración exacta
+          </ion-checkbox>
+          <div ng-class="{animationtarget: juntada.timelessJuntada.boolean}" ng-show="juntada.timelessJuntada.boolean">
+              <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracion">
+                  <span style="border:none; color: black; font-weight:600;" class="input-label">No hay duración exacta, pero durará un minimo de...</span>
               </label>
-              <!--- TODO: AGREGAR IMAGEN -->
-              <div class="row responsive-md">
-                <div class="col">{{ guest.name }}</div>  
-                <div class="col"><span ng-show="guest.host">Los anfitriones no pueden faltar a la juntada</span></div>
-              </div>     
-            </li>
-            <li class="item ion-item disableditem" ng-show="juntada.guests.length == 0">No se han seleccionado invitados todavía</li>
-          </ul>
+              <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
+                  <input type="number" step="1" min="0" max="24" ng-model="juntada.timelessJuntada.duration.hours"><p style="font-style:italic;">horas</p>
+              </label>
+              <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
+                  <input type="number" step="5" min="0" max="55" ng-model="juntada.timelessJuntada.duration.minutes"><p style="font-style:italic;">minutos</p>
+              </label>
+          </div>      
+          <ion-item class="item-divider"></ion-item>  
+        </div>        
+        
+        <!-- La Juntada puede extenderse -->
+        <div>
+          <ion-checkbox ng-model="juntada.duration.canBeExtended.boolean" ng-show="!juntada.timelessJuntada.boolean"  class="item-checkbox-right checkbox-balanced" >
+            La juntada puede extenderse
+          </ion-checkbox>
+          <div ng-show="!juntada.timelessJuntada.boolean">
+            <div ng-class="{animationtarget: juntada.duration.canBeExtended.boolean}" ng-show="juntada.duration.canBeExtended.boolean">
+              <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="extDuracionHoras">
+                  <input type="number" step="1" min="0" max="24" ng-model="juntada.duration.canBeExtended.hours"><p style="font-style:italic;">horas</p>
+              </label>
+              <label class="item item-input item-stacked-label" id="at12" name="extDuracionHorasMinutos">
+                <input type="number" step="5" min="0" max="55" ng-model="juntada.duration.canBeExtended.minutes"><p style="font-style:italic;">minutos</p>
+              </label>
+            </div>
+            <ion-item class="item-divider"></ion-item>
+          </div>        
+        </div>   
+
+        <ion-list>
+          <ion-item id="addJuntadaLogicStep-list-item112">Es necesario que recibas y despidas</ion-item>
+          <ion-checkbox class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">a los invitados personalmente?</ion-toggle>
+        </ion-list>
+        <ion-item class="item-divider"></ion-item>
+                
+        <!-- Llegadas tarde -->
+        <div>
+          <ion-checkbox ng-model="juntada.options.lateArrivals.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
+            Aceptas llegadas tarde?
+          </ion-checkbox>      
+          <div ng-show="juntada.options.lateArrivals.boolean" ng-class="{animationtarget: juntada.options.lateArrivals.boolean}">
+              <ion-item id="addJuntadaLogicStep-range3">
+                <input type="number" step="1" max="{{juntada.guests.length + 1}}" ng-model="juntada.options.lateArrivals.numberOfGuests">
+                <p style="font-style:italic;">cuantos invitados?</p>
+              </ion-item>
+              <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionHoras">
+                  <input type="number" step="1" min="0" max="{{juntada.duration.hours}}" ng-model="juntada.options.lateArrivals.duration.hours"><p style="font-style:italic;">horas</p>
+              </label>
+              <label class="item item-input item-stacked-label" id="addJuntadaDataStep-input12" name="duracionMinutos">
+                  <input type="number" step="5" min="0" max="{{juntada.duration.minutes}}" ng-model="juntada.options.lateArrivals.duration.minutes"><p style="font-style:italic;">minutos</p>
+              </label>
+          </div>
+          <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider32"> </ion-item>
         </div>
-      </div>
+        
+        <!-- Inasistencias -->
+        <ion-checkbox ng-model="juntada.options.absences.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
+          Puede haber inasistencias?
+        </ion-checkbox>
+        <div ng-show="juntada.options.absences.boolean">
+          <ion-toggle ng-model="juntada.options.absences.howManyOrWho">
+              <b ng-show="!juntada.options.absences.howManyOrWho">Cuantas inasistencias?</b>
+              <b ng-show="juntada.options.absences.howManyOrWho">Quienes pueden faltar?</b>
+          </ion-toggle>
+          <div ng-show="!juntada.options.absences.howManyOrWho">
+            <ion-item id="addJuntadaLogicStep-range5">
+              <input value="0" max="" type="number" step="1"><p style="font-style:italic;">inasistencias</p>
+            </ion-item>
+          </div>
+        
+          
+          
+          <div ng-show="juntada.options.absences.howManyOrWho">
+            <ul class="list">
+              <li ng-class="{disableditem: guest.host}" class="item item-checkbox" ng-repeat="guest in juntada.guests">
+                <label class="checkbox">
+                    <input ng-disabled="guest.host" ng-model="guest.canBeAbscent" type="checkbox">            
+                </label>
+                <!--- TODO: AGREGAR IMAGEN -->
+                <div class="row responsive-md">
+                  <div class="col">{{ guest.name }}</div>  
+                  <div class="col"><span ng-show="guest.host">Los anfitriones no pueden faltar a la juntada</span></div>
+                </div>     
+              </li>
+              <li class="item ion-item disableditem" ng-show="juntada.guests.length == 0">No se han seleccionado invitados todavía</li>
+            </ul>
+          </div>
+        </div>
 
 
-            <!-- <ion-list >
+              <!-- <ion-list >
+                <ion-item ng-repeat="guest in juntada.guests">
+                  {{ guest.name }}<ion-checkbox ng-model="guest.canBeAbscent" style="display:inline;"></ion-checkbox>              
+                </ion-item>
+              </ion-list>
+              <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider33"> </ion-item>
+          </div> -->
+
+          <!-- <ion-item id="addJuntadaLogicStep-list-item126">Hay invitados que no </ion-item>
+          <ion-checkbox ng-model="juntada.options.cantBeAbsent.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
+              pueden faltar?
+            </ion-checkbox>
+          <ion-item ng-show="juntada.options.cantBeAbsent.boolean" class="item-avatar" id="addJuntadaLogicStep-list-item127">
+            <ion-list >
               <ion-item ng-repeat="guest in juntada.guests">
-                {{ guest.name }}<ion-checkbox ng-model="guest.canBeAbscent" style="display:inline;"></ion-checkbox>              
+                {{ guest.name }}<ion-checkbox ng-model="guest.cantBeAbscent" style="display:inline;"></ion-checkbox>              
               </ion-item>
             </ion-list>
-            <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider33"> </ion-item>
+          </ion-item>
         </div> -->
-
-        <!-- <ion-item id="addJuntadaLogicStep-list-item126">Hay invitados que no </ion-item>
-        <ion-checkbox ng-model="juntada.options.cantBeAbsent.boolean" class="item-checkbox-right checkbox-balanced" id="addJuntadaLogicStep-toggle23">
-            pueden faltar?
-          </ion-checkbox>
-        <ion-item ng-show="juntada.options.cantBeAbsent.boolean" class="item-avatar" id="addJuntadaLogicStep-list-item127">
-          <ion-list >
-            <ion-item ng-repeat="guest in juntada.guests">
-              {{ guest.name }}<ion-checkbox ng-model="guest.cantBeAbscent" style="display:inline;"></ion-checkbox>              
-            </ion-item>
-          </ion-list>
-        </ion-item>
-      </div> -->
-      <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider33"> </ion-item>
-      
+        <ion-item class="item-divider" id="addJuntadaLogicStep-list-item-divider33"> </ion-item>
+        
 
 
-      
-      
-      
-      <!-- NO ENTRA EN MVP
-      
-        <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle27">No puede llegar tarde</ion-toggle>
-        <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle28">No puede irse antes</ion-toggle>
-      
-      -->
-    <div class="content-margin"></div>
+        
+        
+        
+        <!-- NO ENTRA EN MVP
+        
+          <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle27">No puede llegar tarde</ion-toggle>
+          <ion-toggle toggle-class="toggle-energized" id="addJuntadaLogicStep-toggle28">No puede irse antes</ion-toggle>
+        
+        -->
+        <div class="content-margin"></div>
+      </div>
     </form>
   </ion-content>
 </ion-content>

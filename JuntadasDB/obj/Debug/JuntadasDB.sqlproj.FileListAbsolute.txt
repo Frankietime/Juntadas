@@ -1,0 +1,9 @@
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\bin\Debug\JuntadasDB.dacpac
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\bin\Debug\JuntadasDB.dll
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\bin\Debug\JuntadasDB.pdb
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\obj\Debug\Model.xml
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\obj\Debug\refactor.xml
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\obj\Debug\postdeploy.sql
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\obj\Debug\predeploy.sql
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\obj\Debug\JuntadasDB.dll
+C:\Users\franco\Source\Repos\Juntadas\JuntadasDB\obj\Debug\JuntadasDB.pdb

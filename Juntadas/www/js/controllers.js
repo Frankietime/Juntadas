@@ -28,6 +28,8 @@ angular.module('app.controllers', [])
                 $scope.daysRangeTo = to;
             }
 
+            $scope.presetSelection = '';
+
             $scope.daysRangeTo = ''
 
             $scope.submit = function () {
